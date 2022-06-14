@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "name": "DiuDiu",
+        "introduce": "I am god, haha!!.",
+        "level": 99,
+        "totalGame": 0,
+        "winGame": 0,
+        "account": "Diu",
+        "password": "Diu",
+        "token": "qazxc"
+    },
+    {
+        "id": 2,
+        "name": "Tester",
+        "introduce": "tester jyu.",
+        "level": 0,
+        "totalGame": 4,
+        "winGame": 4,
+        "account": "123",
+        "password": "123",
+        "token": "fhgfghfg"
+    },
+    {
+        "id": 3,
+        "name": "ee",
+        "introduce": "ee",
+        "level": 0,
+        "totalGame": 2,
+        "winGame": 2,
+        "account": "2222",
+        "password": "2222",
+        "token": "0.twwgxpo3xxr"
+    }
+]
