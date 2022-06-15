@@ -4,8 +4,10 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const { stringify } = require('querystring');
+const PORT = process.env.PORT || 5000;
 
 const app = express();
+
 
 // path.join => path: express所提供的package(負責解決路徑問題) | 在不同路徑下 斜線是不同的 ex. windos => "\" , linux => "/"
 const PLAYER_DATA_FILE = path.join(__dirname, 'server-player-data.json');
@@ -317,7 +319,8 @@ Object.keys(ifaces).forEach(function (ifname) {
 });
 
 // app 真正開始執行 用哪個port啟動 (得到現在的port)
-app.listen(app.get('port'), () => {
-  console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
-});
+// app.listen(app.get('port'), () => {
+//   console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
+// });
+app.listen(PORT, () => console.log(`Listening on ${PORT}`))
 
