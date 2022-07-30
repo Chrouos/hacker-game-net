@@ -26,7 +26,7 @@
     name: "PlayerList",
     created() {
       this.$store.dispatch("getPlayerItems").then(() => {
-        console.log("Total Player:", this.playerItems.length);
+        // console.log("Total Player:", this.playerItems.length);
       });
     },
     computed: {

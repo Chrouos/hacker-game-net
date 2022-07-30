@@ -26,8 +26,8 @@
       </div>
     </div>
 
-    <div class="block">
-      <a class="create-btn" @click="createRoom">建立</a>
+    <div class="create-btn-div">
+      <a class="create-room-a" @click="createRoom">建立</a>
     </div>
   </div>
 </template>
@@ -87,7 +87,7 @@
           password: this.roomPassword,
         };
 
-        console.log("newRoom", newRoom);
+        // console.log("newRoom", newRoom);
         this.$store.dispatch("addRoomItem", newRoom).then(() => {
           // const emitter = mitt();
           // emitter.emit("intoTheRoom", newRoom);
@@ -134,14 +134,38 @@
   }
 
   .room-wait-create input {
-    color: color;
+    color: white;
     text-align: center;
-    height: 40px;
+    height: 50px;
     font-size: 30px;
     background: none;
-    border: 2px solid rgba(35, 35, 35, 0.45);
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
   }
 
-  .create-btn {
+  .create-btn-div {
+    background: none;
+    font-size: 25px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .create-room-a {
+    color: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    font-size: 25px;
+    padding: 10px 20px;
+    transition: 0.5s;
+  }
+
+  .create-room-a:hover {
+    color: white;
+    border: 3px solid white;
+    letter-spacing: 0.5;
+    font-size: 30px;
+    padding: 10px 30px;
   }
 </style>

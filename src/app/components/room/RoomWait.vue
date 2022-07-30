@@ -1,12 +1,8 @@
 <template>
   <div id="roomWaitPlayer">
     <div class="box roomWait--height">
-      <div
-        name="title"
-        style="height:60px; text-align:center"
-        class="title-div"
-      >
-        <span style="font-size:25px;">{{ this.roomItem.name }}</span>
+      <div name="title" style="" class="title-div">
+        <span>{{ this.roomItem.name }}</span>
       </div>
       <div class="columns">
         <div class="column playerItem--div">
@@ -16,7 +12,7 @@
             >
           </a>
         </div>
-        <div class="column" style="height:500px">
+        <div class="column playerItem--div">
           <a class="box" style="height:100%;" @click="inTheBlueRoom">
             <span style="font-size:100px; color: blue">
               {{ this.roomItem.player2Name }}</span
@@ -28,8 +24,8 @@
         <!-- <router-link :to="{ path: '/register', query: { plan: 'private' } }">
           >開始</router-link
         > -->
-        <a class="button" @click="startRoom">開始</a>
-        <a class="button" @click="deleteRoom">刪除房間</a>
+        <a class="button aa" @click="startRoom">開始</a>
+        <a class="button aa" @click="deleteRoom">刪除房間</a>
       </div>
     </div>
   </div>
@@ -56,7 +52,7 @@
         const token = localStorage.getItem("token");
         this.playerItem = this.$store.getters.playerItemFromToken(token);
       });
-      console.log("this.roomId", this.roomId);
+      // console.log("this.roomId", this.roomId);
     },
 
     mounted() {
@@ -92,17 +88,21 @@
           password: this.roomPassword,
         };
 
-        console.log("newRoom", newRoom);
+        // console.log("newRoom", newRoom);
         this.$store.dispatch("addRoomItem", newRoom).then(() => {
           // this.$router.push("/");
         });
       },
       deleteRoom() {
-        const deleteItem = { id: this.roomId };
-        this.$store.dispatch("removeRoomItem", deleteItem).then(() => {
-          this.$parent.isCreate = false;
-          this.$parent.isInRoom = false;
-        });
+        if (this.roomItem.createrId == this.playerItem.id) {
+          const deleteItem = { id: this.roomId };
+          this.$store.dispatch("removeRoomItem", deleteItem).then(() => {
+            this.$parent.isCreate = false;
+            this.$parent.isInRoom = false;
+          });
+        } else {
+          console.log("YOU CANT DO IT!!!");
+        }
       },
       startRoom() {
         this.$router.push("/roomStart/" + this.roomItem.id, {
@@ -121,7 +121,7 @@
           this.roomItem.player1Id = null;
           this.roomItem.player1Name = null;
         }
-        console.log(this.roomItem);
+        // console.log(this.roomItem);
         this.$store.dispatch("updateRoomStart", this.roomItem).then(() => {});
       },
 
@@ -136,7 +136,7 @@
           this.roomItem.player2Id = null;
           this.roomItem.player2Name = null;
         }
-        console.log(this.roomItem);
+        // console.log(this.roomItem);
         this.$store.dispatch("updateRoomStart", this.roomItem).then(() => {});
       },
     },
@@ -156,10 +156,43 @@
 
   .roomWait--height {
     height: 650px;
+    background: none;
+    border: 5px solid rgba(255, 255, 255, 0.25);
   }
 
   .playerItem--div {
     height: 500px;
     text-align: center;
+    vertical-align: middle;
+  }
+
+  .playerItem--div a {
+    background: rgba(180, 180, 180, 0.2);
+    text-shadow: 0.3em 0.3em 0.5em white;
+  }
+
+  .title-div {
+    text-align: center;
+    color: white;
+  }
+
+  .title-div span {
+    font-size: 80px;
+  }
+
+  .aa {
+    position: relative;
+    background: none;
+    color: white;
+    top: 10px;
+    margin: 10px;
+  }
+
+  .aa:hover {
+    position: relative;
+    background: none;
+    color: white;
+    top: 10px;
+    margin: 10px;
   }
 </style>

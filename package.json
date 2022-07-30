@@ -1,6 +1,6 @@
 {
   "name": "hacker-game",
-  "description": "Routing - Hacker Game",
+  "description": "Routing - hacker game",
   "version": "1.0.0",
   "author": "Fullstack.io",
   "private": true,
@@ -9,7 +9,8 @@
     "server": "node server",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "vue-router": "^4.0.5",

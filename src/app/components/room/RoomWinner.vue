@@ -21,13 +21,20 @@
       winner: {
         type: String,
       },
+      roomItemId: {
+        type: String,
+      },
     },
 
     computed: {},
 
     created() {
       console.log("this.winner", this.winner);
-      this.timer();
+      console.log("this.roomItemId", this.roomItemId);
+      const deleteItem = { id: this.roomItemId };
+      this.$store.dispatch("removeRoomItem", deleteItem).then(() => {
+        this.timer();
+      });
     },
 
     methods: {

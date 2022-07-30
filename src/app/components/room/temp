@@ -192,11 +192,11 @@
             if (that.roomItem.nowPlayer != that.prePlayer) {
               that.judgeWinner();
               that.updatePlayer();
-              console.log(
-                "that.redStart, that.blueStart:",
-                that.redStart,
-                that.blueStart
-              );
+              ; console.log(
+              ;   "that.redStart, that.blueStart:",
+              ;   that.redStart,
+              ;   that.blueStart
+              ; );
             }
           });
         }, 500);

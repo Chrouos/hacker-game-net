@@ -149,7 +149,7 @@
           account: this.login_account,
           password: this.login_password,
         };
-        console.log(loginItem);
+        // console.log(loginItem);
         this.$store.dispatch("login", loginItem).then(() => {
           this.$router.push({ path: "/lobby" });
         });

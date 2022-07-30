@@ -42,7 +42,7 @@
       this.$store.dispatch("getPlayerItems").then(() => {
         const token = localStorage.getItem("token");
         this.playerItem = this.$store.getters.playerItemFromToken(token);
-        console.log(this.playerItem);
+        // console.log(this.playerItem);
         this.id = this.playerItem.name;
         this.introduce = this.playerItem.introduce;
       });
@@ -63,7 +63,7 @@
           password: this.playerItem.password,
           token: this.playerItem.token,
         };
-        console.log("updateItem", updateItem);
+        // console.log("updateItem", updateItem);
         this.$store.dispatch("updatePlayerItem", updateItem).then(() => {});
       },
     },

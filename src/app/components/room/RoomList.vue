@@ -88,7 +88,7 @@
     },
     methods: {
       intoTheRoom(room) {
-        console.log("intoTHEroom:", room);
+        // console.log("intoTHEroom:", room);
         this.room = room;
         if (this.room.password) this.isPassword = true;
         else this.isInRoom = true;

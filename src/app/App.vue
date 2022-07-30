@@ -59,7 +59,7 @@
         this.updateInitialState(token);
         this.$store.dispatch("getPlayerItems").then(() => {
           this.playerItem = this.$store.getters.playerItemFromToken(token);
-          console.log(this.playerItem);
+          // console.log(this.playerItem);
         });
       }
     },

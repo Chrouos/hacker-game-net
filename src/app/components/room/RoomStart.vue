@@ -1,19 +1,25 @@
 <template>
-  <div style="width:100%;">
+  <div style="width:100%; ">
     <div class="columns">
-      <div class="column" style="background-color: #BC3522;">
+      <div class="column red-station">
         <div
           style="color:black; margin:30px; opacity: 50%; user-select: none;"
           class="box"
         >
-          <p>攻擊筆記</p>
-          <p>1. protector: 防禦。（hp +100）</p>
+          <p>攻擊筆記:每顆節點初始血量為 hp:100</p>
+          <p>1. <span class="code">protector</span>: 防禦。（hp +100）</p>
           <p>
-            2. beamCannon: 光束加農砲（hp -50），若對面下木馬會變對方的
+            2. <span class="code">beamCannon</span>:
+            光束加農砲，攻下要要兩回合（hp -50），若對面下木馬會變對方的
           </p>
-          <p>3. hack: 駭入別人的，要四秒（hp -25）</p>
-          <p>4. horse: 木馬</p>
-          <p>5. worm: 不怕木馬（hp-25）</p>
+          <p>
+            3. <span class="code">hack</span>: 駭入別人的，攻下要四回合（hp
+            -25）
+          </p>
+          <p>4. <span class="code">horse</span>: 木馬</p>
+          <p>
+            5. <span class="code">worm</span>: 不怕木馬，攻下要四回合（hp-25）
+          </p>
           <p>努力佔據更多的節點吧!!</p>
           <p>假如要用防禦守住第一個節點 ex. protector 1</p>
         </div>
@@ -75,18 +81,28 @@
         </div>
       </div>
 
-      <div class="column" style="background-color: #4D8EBF;">
-        <div style="color:black; margin:30px; opacity: 50%; " class="box">
-          <!-- user-select: none; -->
+      <div class="column blue-station">
+        <div
+          style="color:black; margin:30px; opacity: 50%; user-select: none;"
+          class="box"
+        >
+          <!--  -->
 
-          <p>攻擊筆記</p>
-          <p>1. protector: 防禦。（hp +100）</p>
+          <p>攻擊筆記:每顆節點初始血量為 hp:100</p>
+          <p>1. <span class="code-blue">protector</span>: 防禦。（hp +100）</p>
           <p>
-            2. beamCannon: 光束加農砲（hp -50），若對面下木馬會變對方的
+            2. <span class="code-blue">beamCannon</span>:
+            光束加農砲，攻下要要兩回合（hp -50），若對面下木馬會變對方的
           </p>
-          <p>3. hack: 駭入別人的，要四秒（hp -25）</p>
-          <p>4. horse: 木馬</p>
-          <p>5. worm: 不怕木馬（hp-25）</p>
+          <p>
+            3. <span class="code-blue">hack</span>: 駭入別人的，攻下要四回合（hp
+            -25）
+          </p>
+          <p>4. <span class="code-blue">horse</span>: 木馬</p>
+          <p>
+            5. <span class="code-blue">worm</span>:
+            不怕木馬，攻下要四回合（hp-25）
+          </p>
           <p>努力佔據更多的節點吧!!</p>
           <p>假如要用防禦守住第一個節點 ex. protector 1</p>
         </div>
@@ -171,7 +187,7 @@
         } else if (this.playerItem.id == this.roomItem.player2Id) {
           this.inBlue = true;
         }
-        console.log(this.inRed, this.inBlue);
+        // console.log(this.inRed, this.inBlue);
 
         this.start();
       });
@@ -192,11 +208,11 @@
             if (that.roomItem.nowPlayer != that.prePlayer) {
               that.judgeWinner();
               that.updatePlayer();
-              console.log(
-                "that.redStart, that.blueStart:",
-                that.redStart,
-                that.blueStart
-              );
+              // console.log(
+              //   "that.redStart, that.blueStart:",
+              //   that.redStart,
+              //   that.blueStart
+              // );
             }
           });
         }, 500);
@@ -286,7 +302,7 @@
             this.redStart = true;
             this.blueStart = false;
           }
-          console.log(this.roomItem);
+          // console.log(this.roomItem);
           this.updateBattlefield();
 
           this.$store.dispatch("updateRoomStart", this.roomItem).then(() => {
@@ -312,15 +328,19 @@
             }
             this.$store
               .dispatch("updatePlayerItem", this.playerItem)
-              .then(() => {});
-
-            const deleteItem = { id: this.roomId };
-            this.$store.dispatch("removeRoomItem", deleteItem).then(() => {});
-
-            this.$router.push({
-              name: "RoomWinner",
-              params: { winner: this.roomItem.player1Name },
-            });
+              .then(() => {
+                const deleteItem = { id: this.roomId };
+                console.log("deleteItem", deleteItem);
+                this.$store.dispatch("removeRoomItem", deleteItem).then(() => {
+                  this.$router.push({
+                    name: "RoomWinner",
+                    params: {
+                      winner: this.roomItem.player1Name,
+                      roomItemId: this.roomId,
+                    },
+                  });
+                });
+              });
           } else if (blue > red) {
             this.roomItem.winner = this.roomItem.player2Id;
             if (this.roomItem.player2Id == this.playerItem.id) {
@@ -329,15 +349,19 @@
 
             this.$store
               .dispatch("updatePlayerItem", this.playerItem)
-              .then(() => {});
-
-            const deleteItem = { id: this.roomId };
-            this.$store.dispatch("removeRoomItem", deleteItem).then(() => {});
-
-            this.$router.push({
-              name: "RoomWinner",
-              params: { winner: this.roomItem.player2Name },
-            });
+              .then(() => {
+                const deleteItem = { id: this.roomId };
+                console.log("deleteItem", deleteItem);
+                this.$store.dispatch("removeRoomItem", deleteItem).then(() => {
+                  this.$router.push({
+                    name: "RoomWinner",
+                    params: {
+                      winner: this.roomItem.player2Name,
+                      roomItemId: this.roomId,
+                    },
+                  });
+                });
+              });
           }
         }
       },
@@ -413,5 +437,23 @@
 
   body::-webkit-scrollbar {
     display: none;
+  }
+
+  .red-station {
+    background-color: rgba(255, 0, 0, 0.4);
+  }
+
+  .blue-station {
+    background-color: rgba(80, 190, 270, 0.4);
+  }
+
+  .code {
+    color: red;
+    font-size: 1.5em;
+  }
+
+  .code-blue {
+    color: blue;
+    font-size: 1.5em;
   }
 </style>

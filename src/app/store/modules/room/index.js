@@ -25,6 +25,7 @@ const actions = {
         });
     },
     removeRoomItem({ commit }, deleteItem) {
+        console.log("removeRoomItem", deleteItem);
         return axios.post("/api/room/delete", deleteItem).then((response) => {
             commit("UPDATE_ROOM_ITEMS", response.data);
         });

@@ -4,10 +4,9 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const { stringify } = require('querystring');
-const PORT = process.env.PORT || 5000;
+
 
 const app = express();
-
 
 // path.join => path: express所提供的package(負責解決路徑問題) | 在不同路徑下 斜線是不同的 ex. windos => "\" , linux => "/"
 const PLAYER_DATA_FILE = path.join(__dirname, 'server-player-data.json');
@@ -15,6 +14,7 @@ const ROOM_DATA_FILE = path.join(__dirname, 'server-room-data.json');
 const CHAT_DATA_FILE = path.join(__dirname, 'server-room-chat.json');
 
 app.set('port', (process.env.PORT || 3000)); // 若已經有Port就用前面的 | 若無則用3000
+//
 
 // 已經寫好的 middleware
 app.use(bodyParser.json());
@@ -145,7 +145,7 @@ app.post('/playersUpdate', (req, res) => {
         if (playerItem.id === req.body.id) {
 
           const playerItemToUpdate = playerList.findIndex(playerItem => playerItem.id === req.body.id);
-          console.log("toUpdate:", playerItemToUpdate);
+          console.log("playersUpdateToUpdate:", playerItemToUpdate);
           playerList[playerItemToUpdate] = req.body;
         }
       }); // map
@@ -220,10 +220,10 @@ app.post('/room/delete', (req, res) => {
   fs.readFile(ROOM_DATA_FILE, (err, data) => {
 
     let roomList = JSON.parse(data);
-
     roomList.map((roomItem) => {
+      console.log(roomItem.id, req.body.id);
       // 一個一個查找，若要資料內的id和我要刪的id一樣
-      if (roomItem.id === req.body.id) {
+      if (String.valueOf(roomItem.id) === String.valueOf(req.body.id)) {
         const roomItemToRemove = roomList.findIndex(roomItem => roomItem.id === req.body.id);
         console.log("toRemove:", roomItemToRemove, "id:", req.body.id);
         roomList.splice(roomItemToRemove, 1);
@@ -248,7 +248,7 @@ app.post('/roomStartUpdate', (req, res) => {
         // 一個一個查找，若要資料內的id和我要刪的id一樣
         if (roomItem.id === req.body.id) {
           const roomItemToUpdate = roomList.findIndex(roomItem => roomItem.id === req.body.id);
-          console.log("toUpdate:", req.body);
+          console.log("roomStartUpdate:", req.body);
           roomList[roomItemToUpdate] = req.body; // 先找到是哪一間房 -> 將circle進行修改
           // console.log(roomList[roomItemToUpdate]);
         }
@@ -319,8 +319,7 @@ Object.keys(ifaces).forEach(function (ifname) {
 });
 
 // app 真正開始執行 用哪個port啟動 (得到現在的port)
-// app.listen(app.get('port'), () => {
-//   console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
-// });
-app.listen(PORT, () => console.log(`Listening on ${PORT}`))
+app.listen(app.get('port'), () => {
+  console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
+});
 
