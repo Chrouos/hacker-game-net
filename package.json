@@ -13,24 +13,25 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "vue-router": "^4.0.5",
     "axios": "^0.21.0",
     "body-parser": "^1.19.0",
     "core-js": "^3.6.5",
     "express": "^4.17.1",
+    "tedious": "^14.5.0",
     "vue": "^3.0.0",
+    "vue-router": "^4.0.5",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.0",
     "@vue/cli-plugin-eslint": "^4.5.0",
     "@vue/cli-service": "^4.5.0",
-    "concurrently": "^3.6.1",
-    "vue-template-compiler": "^2.5.17",
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
+    "concurrently": "^3.6.1",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0-0"
+    "eslint-plugin-vue": "^7.0.0-0",
+    "vue-template-compiler": "^2.5.17"
   },
   "eslintConfig": {
     "root": true,

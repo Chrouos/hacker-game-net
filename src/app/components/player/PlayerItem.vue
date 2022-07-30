@@ -22,7 +22,7 @@
             placeholder="自我介紹"
             v-model="introduce"
           />
-          <p>勝利場次</p>
+          <p>勝利場次: {{ playerItem.winGame }}</p>
           <a class="updateBtn" @click="update"><span>UPDATE</span></a>
         </div>
       </form>

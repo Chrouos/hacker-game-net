@@ -1,10 +1,9 @@
 [
     {
         "id": 1,
-        "name": "DiuDiu",
-        "introduce": "I am god, haha!!.",
+        "name": "Chrouo",
+        "introduce": "管理員",
         "level": 99,
-        "totalGame": 0,
         "winGame": 0,
         "account": "Diu",
         "password": "Diu",
@@ -15,8 +14,8 @@
         "name": "Tester",
         "introduce": "tester jyu.",
         "level": 0,
-        "totalGame": 21,
-        "winGame": 4,
+        "totalGame": 22,
+        "winGame": 5,
         "account": "123",
         "password": "123",
         "token": "fhgfghfg"
@@ -31,5 +30,27 @@
         "account": "2222",
         "password": "2222",
         "token": "0.twwgxpo3xxr"
+    },
+    {
+        "id": 4,
+        "name": "DD",
+        "introduce": "CC",
+        "level": 0,
+        "totalGame": 0,
+        "winGame": 0,
+        "account": "qwe",
+        "password": "qwe",
+        "token": "0.9eeq2t9rz5h"
+    },
+    {
+        "id": 5,
+        "name": "asd",
+        "introduce": "asd",
+        "level": 0,
+        "totalGame": 0,
+        "winGame": 0,
+        "account": "asd",
+        "password": "asd",
+        "token": "0.ihntu0toco"
     }
 ]
